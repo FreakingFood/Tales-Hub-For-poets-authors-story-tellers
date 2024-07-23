@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter Preferences</title>
+  <style>
+    /* Basic styling for demonstration */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .preferences {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="preferences">
+    <h2>Filter Preferences</h2>
+    <form id="filterForm">
+      <label><input type="checkbox" name="poets" value="Emily Dickinson"> Poet : Emily Dickinson</label>
+      <label><input type="checkbox" name="poets" value="Robert Frost"> Poet : Robert Frost</label>
+      <label><input type="checkbox" name="authors" value="Jane Austen"> author :  Jane Austen</label>
+      <label><input type="checkbox" name="authors" value="J.K. Rowling"> author : J.K. Rowling</label>
+      <label><input type="checkbox" name="storytellers" value="Hans Christian Andersen"> story teler: Hans Christian Andersen</label>
+      <label><input type="checkbox" name="storytellers" value="The Brothers Grimm"> story teller : he Brothers Grimm</label>
+      <label><input type="checkbox" name="topics" value="Fantasy"> topic: Fantasy</label>
+      <label><input type="checkbox" name="topics" value="Romance"> topic : Romance</label>
+      <button type="submit" style="background-color: rgba(252, 220, 12, 0.973); font-weight: bold; color: black; font-weight: bold;">Filter</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get selected preferences
+      const form = event.target;
+      const poets = Array.from(form.elements['poets']).filter(input => input.checked).map(input => input.value);
+      const authors = Array.from(form.elements['authors']).filter(input => input.checked).map(input => input.value);
+      const storytellers = Array.from(form.elements['storytellers']).filter(input => input.checked).map(input => input.value);
+      const topics = Array.from(form.elements['topics']).filter(input => input.checked).map(input => input.value);
+
+      // Display selected preferences (for demonstration)
+      console.log('Selected Poets:', poets);
+      console.log('Selected Authors:', authors);
+      console.log('Selected Storytellers:', storytellers);
+      console.log('Selected Topics:', topics);
+
+      // You can perform further actions here, like filtering data based on these preferences
+    });
+  </script>
+</body>
+</html>
